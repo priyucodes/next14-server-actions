@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import { MotionDiv } from "./MotionDiv";
 export interface AnimeProp {
   id: string;
   name: string;
@@ -17,9 +17,26 @@ interface Prop {
   index: number;
 }
 
-function AnimeCard({ anime }: Prop) {
+const variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+
+function AnimeCard({ anime, index }: Prop) {
   return (
-    <div className='max-w-sm rounded relative w-full'>
+    // Now only the parent is client side rendered, the child component is server side rendered, we make a new component MotionDiv.tsx and import it here to make the child component server side rendered
+    <MotionDiv
+      initial='hidden'
+      animate='visible'
+      variants={variants}
+      // Stagger animation to make the animation more smooth
+      // The staggerChildren prop allows you to stagger the animations of children of a container. It can be used with any layout, including flexbox, grid, and more.
+      // stagger effect is used to animate the children of a container one after the other with a delay between each child.
+      // https://www.framer.com/motion/stagger/
+      transition={{ duration: index * 0.25, ease: "easeInOut", delay: 0.5 }}
+      viewport={{ amount: 0.1 }}
+      className='max-w-sm rounded relative w-full'
+    >
       <div className='relative w-full h-[37vh]'>
         <Image
           src={`https://shikimori.one${anime.image.original}`}
@@ -64,7 +81,7 @@ function AnimeCard({ anime }: Prop) {
           </div>
         </div>
       </div>
-    </div>
+    </MotionDiv>
   );
 }
 
