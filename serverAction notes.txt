@@ -1,0 +1,83 @@
+inline fold extension to hide inline classes only visible when u click
+
+Why need server actions when you have API routes. wont it break the separation of concerns? 
+We will see in this short crash course where we will use infinite scroll and framer motion. and i will add skeleton loading as well.
+
+Server Components are a new feature in Next.js that allows you to build your entire application using React components that run on the server. This means that you can build your entire application using React components that run on the server, and then render them to the client using the same React components.
+
+Server Actions are functions that runs on the server and can be called from the client(through javascript functions). All we have to do is 'use server' statement.
+ They are useful for performing server-side tasks that need to be done in response to client actions, such as updating a database or sending an email.
+if by default you have a 'use client' module/js file component then u can make a function server action by using 'use server' statement.
+
+
+Client component
+'use client'
+
+async function fetchMoreData(formData) {
+'use server';
+const username = formData.get('username')
+
+}
+
+export default func App(){
+    return (
+        <form action={fetchMoreData}>
+        <input/>
+        <button>Req</button>
+        </form>
+    )
+}
+
+This isnt just a function call, request is made to NEXT API to call that function, NEXTjs hides the complexity of the API call and makes it look like a function call.
+Underhood NEXTjs is making a POST request to the API route and sending the function name and arguments as JSON.
+go to network tab and see the request being made to the API route. 
+
+Why choose server actions against normal API Routes?
+like api route 
+async fun hi(fd) {
+    const res = await fertch('/api/data', {
+        method: 'POST',
+        body: JSON.stringify({fd})
+    })
+    etc.
+}
+and in above we dont make call to the servers at all.(server actions.)
+
+With server actions we focus on business logic, getting data from forms and doing business oeprations.
+
+Using api we need to build API on server and client, but with server actions we just need to write the function and call it. in server we dont need to write API.
+It is also a problem with NextJS server actions, all it does is make post request we dont have control over this request, we can run into compatibility issue if we are making apps in mobile and destop. cuz updating server action endpoint for web, mobile, destop is risky and time consuming.
+IF YOU WANT ONLY WEBAPP then server actions are good.
+
+We will have less client code and more server code. even if JS is disabled it can show the UI as it runs on server.
+
+Framer motion works on client side
+Infinite scroll works on client side as well. it depends on browser
+
+Offloading burden of processing client.
+
+Page will load faster
+they will respond faster/better
+Search engines will favour them
+Improve core web vitals
+Improve user experience
+improve crawl ranking and budget
+It improves DX(Developer Experience) as well. focusing on business logic.
+Ship code faster
+benefit ourself with time
+Client and company will be happy.
+
+Server actions can be used inside server component as well with same way asbefore.
+
+'use server'
+export async function fetchAnime()
+just like const res = await fetch('url', {method: 'POST', body: JSON.stringify({fd})})
+const data = await res.json()
+its a get method so it renders the html on the server and sends it to the client.
+
+Infinite scroll load is a client compopnent where we call same server action.
+
+you can still use server action to get the data.
+server actions allow u to do mutations on the server side. i.e CRUD operations.
+
+https://stackoverflow.com/questions/23427384/get-form-data-in-react
