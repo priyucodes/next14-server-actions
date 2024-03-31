@@ -4,7 +4,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import AnimeCard, { AnimeProp } from "./AnimeCard";
-
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 let page = 2;
 
 export type AnimeCard = JSX.Element;
@@ -24,13 +25,16 @@ function LoadMore() {
       });
     }
   }, [inView, data]);
+
+  // const wrapper = <Skeleton wrapper={Cards} count={10} height={300} />;
   return (
     <>
       {/* subsequent pages aside page 1 */}
-      <section className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10'>
-        {data}
-      </section>
+
       <section className='flex justify-center items-center w-full'>
+        <section className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10'>
+          {data}
+        </section>
         <div ref={ref}>
           <Image
             src='./spinner.svg'

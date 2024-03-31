@@ -3,6 +3,11 @@ Framer motion is good for animations. it is a library for animations. it is a re
 GSAP alternative. 
 3js for 3d
 
+
+https://www.npmjs.com/package/react-placeholder
+https://www.npmjs.com/package/react-placeholder-loading
+
+
 Why need server actions when you have API routes. wont it break the separation of concerns? 
 We will see in this short crash course where we will use infinite scroll and framer motion. and i will add skeleton loading as well.
 
