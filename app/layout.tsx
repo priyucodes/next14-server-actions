@@ -19,12 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body className={dmSans.className}>
-        <main className="max-w-7xl mx-auto bg-[#0F1117]">
-          <Hero />
+        {/* bg-[#0F1117] */}
+        <main className='max-w-7xl mx-auto bg-white'>
+          {/* <Hero /> */}
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </main>
       </body>
     </html>

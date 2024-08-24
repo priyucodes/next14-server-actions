@@ -1,0 +1,85 @@
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+
+  /* height: 100vh; */ /* old */
+  height: 90vh; /* new */
+  margin-bottom: 4px;
+  padding: 0 2%;
+  /* new */
+  /* align-items: stretch; */
+}
+
+.card {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  max-width: 20rem;
+  color: black;
+
+  /* New */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* flex: 1; */
+}
+
+.cardContent {
+  padding: 0.5rem;
+
+  /* New */
+  flex: 1;
+}
+
+.cardImage {
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  width: 100%;
+
+  /* new */
+  /* max-height */
+  height: 200px;
+  object-fit: cover;
+}
+
+.cardDetails {
+  padding: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  /* new */
+  flex: 1;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+}
+
+.cardKm,
+.cardMarketPrice {
+  font-weight: 500;
+}
+
+.cardFooter {
+  border-top: 1px solid #e5e7eb;
+  padding: 0.75rem 0;
+  text-align: center;
+}
+
+.cardPrice {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: bold;
+  color: #3b82f6;
+}
+
+.cardLink {
+  color: #60a5fa;
+  font-weight: 500;
+  text-decoration: none;
+}
